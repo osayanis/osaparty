@@ -47,6 +47,9 @@ window.osaParty = {
     socket.emit("bridge-state", roomId, st);
   },
 
+  // Invité sur le notch : lecture / pause / suivant pour tout le salon (comme les boutons du web).
+  action: function (state) { if (socket && roomId) socket.emit("web-action", roomId, { state: state }); },
+
   leave: function () { try { socket && socket.disconnect(); } catch (e) {} socket = null; roomId = null; }
 };
 
